@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Hasil Pertandingan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container container-custom">
+        <h2 class="text-center mb-4">Form Prediksi Hasil Pertandingan</h2>
+
+        <!-- Tombol Evaluasi dan Visualisasi -->
+        <div class="text-center mb-4">
+            <a href="{{ url_for('evaluation') }}" class="btn btn-secondary me-2">Lihat Evaluasi Data Uji</a>
+            <a href="{{ url_for('visualization') }}" class="btn btn-secondary">Lihat Grafik Pelatihan</a>
+        </div>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mt-3 mb-3">Gol</h5>
+                    <div class="mb-3">
+                        <label for="FTHG" class="form-label">Gol Penuh Waktu (Home)</label>
+                        <input type="number" class="form-control" id="FTHG" name="FTHG" required step="any" placeholder="Contoh: 2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="FTAG" class="form-label">Gol Penuh Waktu (Away)</label>
+                        <input type="number" class="form-control" id="FTAG" name="FTAG" required step="any" placeholder="Contoh: 1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="HTHG" class="form-label">Gol Babak Pertama (Home)</label>
+                        <input type="number" class="form-control" id="HTHG" name="HTHG" required step="any" placeholder="Contoh: 1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="HTAG" class="form-label">Gol Babak Pertama (Away)</label>
+                        <input type="number" class="form-control" id="HTAG" name="HTAG" required step="any" placeholder="Contoh: 0">
+                    </div>
+
+                    <h5 class="mt-3 mb-3">Statistik Tembakan</h5>
+                    <div class="mb-3">
+                        <label for="HS" class="form-label">Tembakan (Home)</label>
+                        <input type="number" class="form-control" id="HS" name="HS" required step="any" placeholder="Contoh: 15">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AS" class="form-label">Tembakan (Away)</label>
+                        <input type="number" class="form-control" id="AS" name="AS" required step="any" placeholder="Contoh: 10">
+                    </div>
+                    <div class="mb-3">
+                        <label for="HST" class="form-label">Tembakan Tepat Sasaran (Home)</label>
+                        <input type="number" class="form-control" id="HST" name="HST" required step="any" placeholder="Contoh: 7">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AST" class="form-label">Tembakan Tepat Sasaran (Away)</label>
+                        <input type="number" class="form-control" id="AST" name="AST" required step="any" placeholder="Contoh: 4">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="mt-3 mb-3">Pelanggaran dan Kartu</h5>
+                    <div class="mb-3">
+                        <label for="HF" class="form-label">Pelanggaran (Home)</label>
+                        <input type="number" class="form-control" id="HF" name="HF" required step="any" placeholder="Contoh: 12">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AF" class="form-label">Pelanggaran (Away)</label>
+                        <input type="number" class="form-control" id="AF" name="AF" required step="any" placeholder="Contoh: 15">
+                    </div>
+                    <div class="mb-3">
+                        <label for="HY" class="form-label">Kartu Kuning (Home)</label>
+                        <input type="number" class="form-control" id="HY" name="HY" required step="any" placeholder="Contoh: 1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AY" class="form-label">Kartu Kuning (Away)</label>
+                        <input type="number" class="form-control" id="AY" name="AY" required step="any" placeholder="Contoh: 2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="HR" class="form-label">Kartu Merah (Home)</label>
+                        <input type="number" class="form-control" id="HR" name="HR" required step="any" placeholder="Contoh: 0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AR" class="form-label">Kartu Merah (Away)</label>
+                        <input type="number" class="form-control" id="AR" name="AR" required step="any" placeholder="Contoh: 0">
+                    </div>
+
+                    <h5 class="mt-3 mb-3">Tendangan Sudut</h5>
+                     <div class="mb-3">
+                        <label for="HC" class="form-label">Tendangan Sudut (Home)</label>
+                        <input type="number" class="form-control" id="HC" name="HC" required step="any" placeholder="Contoh: 5">
+                    </div>
+                    <div class="mb-3">
+                        <label for="AC" class="form-label">Tendangan Sudut (Away)</label>
+                        <input type="number" class="form-control" id="AC" name="AC" required step="any" placeholder="Contoh: 3">
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                <button type="submit" class="btn btn-primary">Prediksi</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

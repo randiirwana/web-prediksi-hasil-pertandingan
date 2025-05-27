@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik Pelatihan Model</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <style>
+        .visualization-container {
+            max-width: 800px; /* Sesuaikan lebar container */
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Pusatkan konten */
+        }
+        .visualization-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+         .plot-container { /* Container untuk grafik Plotly */
+            margin-top: 20px;
+            min-height: 400px; /* Beri tinggi minimum untuk grafik */
+            margin-bottom: 30px; /* Beri jarak antar grafik */
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-custom text-center">
+        <h2>Grafik Proses Pelatihan Model</h2>
+
+        <!-- Container untuk Grafik Loss -->
+        {% if loss_plot_json %}
+             <div id="loss-plot" class="plot-container"></div>
+        {% else %}
+            <p>Grafik Loss tidak tersedia.</p>
+        {% endif %}
+
+        <!-- Container untuk Grafik Akurasi -->
+        {% if accuracy_plot_json %}
+             <div id="accuracy-plot" class="plot-container"></div>
+        {% else %}
+            <p>Grafik Akurasi tidak tersedia.</p>
+        {% endif %}
+
+        <a href="{{ url_for('predict') }}" class="btn btn-primary mt-4">Kembali ke Hasil Prediksi</a>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% if loss_plot_json %}
+    <script>
+        var loss_graph = {{ loss_plot_json | safe }};
+        Plotly.react('loss-plot', loss_graph.data, loss_graph.layout);
+    </script>
+    {% endif %}
+
+    {% if accuracy_plot_json %}
+    <script>
+        var accuracy_graph = {{ accuracy_plot_json | safe }};
+        Plotly.react('accuracy-plot', accuracy_graph.data, accuracy_graph.layout);
+    </script>
+    {% endif %}
+
+</body>
+</html> 

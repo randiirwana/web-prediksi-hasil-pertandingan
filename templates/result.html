@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Prediksi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+<body>
+    <div class="container container-custom text-center">
+        <h2>Hasil Prediksi Pertandingan</h2>
+
+        <p>Hasil yang diprediksi:</p>
+        <p class="prediction-text">{{ prediction }}</p>
+        
+        {% if probabilities %}
+            <div class="probabilities mt-3 mb-4">
+                <p><strong>Probabilitas:</strong></p>
+                <p>Draw: {{ "%.4f" | format(probabilities['Draw']) }}</p>
+                <p>Home Win: {{ "%.4f" | format(probabilities['Home Win']) }}</p>
+                <p>Away Win: {{ "%.4f" | format(probabilities['Away Win']) }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Container untuk grafik Plotly -->
+        {% if proba_plot_json %}
+             <div id="proba-plot" class="result-plot-container"></div>
+        {% endif %}
+
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Kembali ke Form</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% if proba_plot_json %}
+    <script>
+        // Ambil data grafik dari Flask
+        var graph = {{ proba_plot_json | safe }};
+        // Render grafik menggunakan Plotly.js
+        Plotly.react('proba-plot', graph.data, graph.layout);
+    </script>
+    {% endif %}
+
+</body>
+</html> 

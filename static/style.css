@@ -1,0 +1,179 @@
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Ganti font ke yang lebih modern */
+    background: linear-gradient(to right, hsl(270, 33%, 98%), hsl(225, 22%, 96%)); /* Latar belakang gradien */
+    color: #343a40; /* Warna teks utama */
+    padding-top: 40px; /* Jarak dari atas */
+    padding-bottom: 40px; /* Jarak dari bawah */
+    min-height: 100vh; /* Minimal tinggi viewport */
+    display: flex; /* Gunakan flexbox untuk pusatkan konten vertikal */
+    justify-content: center; /* Pusatkan konten horizontal */
+    align-items: center; /* Pusatkan konten vertikal */
+}
+
+/* Container Styling (for centering and adding shadow) */
+.container-custom {
+    max-width: 800px; /* Lebar maksimum container */
+    width: 95%; /* Lebar responsif */
+    margin: auto; /* Pusatkan container secara horizontal */
+    padding: 40px; /* Padding di dalam container */
+    background-color: #ffffff; /* Latar belakang putih */
+    border-radius: 15px; /* Sudut lebih membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bayangan lebih kuat dan menyebar */
+    opacity: 0.98; /* Sedikit transparansi */
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: #343a40; /* Warna teks heading lebih gelap */
+    margin-bottom: 25px; /* Jarak bawah heading */
+    font-weight: 600; /* Ketebalan font */
+}
+
+/* Form Styling */
+.form-label {
+    font-weight: bold;
+    color: #495057; /* Warna teks label */
+    margin-bottom: 8px; /* Jarak bawah label */
+}
+
+.form-control {
+    margin-bottom: 20px; /* Jarak antar input form */
+    border-radius: 5px; /* Sudut input field */
+    border: 1px solid #ced4da; /* Border default */
+    padding: 10px 15px; /* Padding input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Warna border saat focus */
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Bayangan saat focus */
+    outline: none; /* Hapus outline default */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff; /* Warna biru utama Bootstrap */
+    border-color: #007bff;
+    padding: 10px 20px; /* Padding tombol */
+    font-size: 1.1rem; /* Ukuran font tombol */
+    border-radius: 5px; /* Sudut tombol */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease; /* Transisi */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-2px); /* Efek angkat sedikit saat hover */
+}
+
+.btn-primary:active {
+    transform: translateY(0); /* Kembali normal saat diklik */
+}
+
+.btn-secondary {
+     background-color: #6c757d; /* Warna abu-abu sekunder Bootstrap */
+     border-color: #6c757d;
+     padding: 10px 20px;
+     font-size: 1.1rem;
+     border-radius: 5px;
+     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-secondary:hover {
+     background-color: #5a6268;
+     border-color: #545b62;
+     transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+     transform: translateY(0);
+}
+
+/* Specific styles for Result Page */
+.prediction-text {
+    font-size: 2.2rem; /* Ukuran teks prediksi lebih besar */
+    font-weight: bold;
+    color: #28a745; /* Warna hijau untuk hasil */
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.probabilities p {
+    margin-bottom: 10px; /* Jarak antar probabilitas */
+    font-size: 1.1rem;
+}
+
+.result-plot-container {
+    margin-top: 30px; /* Jarak dari elemen di atasnya */
+    margin-bottom: 30px; /* Jarak dari elemen di bawahnya */
+    width: 100%; 
+}
+
+/* Specific styles for Evaluation Page */
+pre {
+    background-color: #e9ecef; /* Latar belakang abu-abu terang */
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto; /* Pastikan scroll jika lebar */
+    border: 1px solid #ced4da;
+    white-space: pre-wrap; /* Wrap text dalam pre */
+    word-wrap: break-word;
+}
+
+/* Specific styles for Visualization Page */
+.plot-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #e9ecef; /* Border ringan di sekitar plot */
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff; /* Latar belakang putih untuk plot */
+}
+
+h5 {
+    margin-top: 25px; /* Jarak atas heading h5 */
+    margin-bottom: 15px; /* Jarak bawah heading h5 */
+    border-bottom: 1px solid #eee; /* Garis bawah */
+    padding-bottom: 8px; /* Padding bawah garis */
+    color: #5a6268; /* Warna abu-abu gelap untuk sub-heading */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container-custom {
+        padding: 20px; /* Kurangi padding pada layar kecil */
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 1rem; /* Kurangi ukuran font tombol */
+        padding: 8px 15px;
+    }
+    .prediction-text {
+        font-size: 1.8rem;
+    }
+}
+
+/* Style dari index.html */
+/* Ini mungkin tumpang tindih, lebih baik dihapus jika tidak spesifik dibutuhkan */
+/*
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+*/
+/*
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+*/
+h5 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+} 
